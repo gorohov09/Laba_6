@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.LinkedList;
@@ -38,6 +39,8 @@ public class Application extends Frame implements Observer, ActionListener, Item
     private  Label speedLabel;
     private  TextField speedText;
 
+    private  JColorChooser tcc;
+
     Application(){
         this.addWindowListener(new WindowAdapter2());
         f = new Frame();
@@ -50,6 +53,9 @@ public class Application extends Frame implements Observer, ActionListener, Item
         b.setActionCommand("OK");
         b.addActionListener(this);
         f.add(b, new Point(20,20));
+
+        tcc = new JColorChooser();
+        f.add(tcc);
 
         colorChoice = new Choice();
         colorChoice.addItem("Синий");
@@ -158,6 +164,8 @@ public class Application extends Frame implements Observer, ActionListener, Item
                 case 3: col= Color.black; break;
                 case 4: col= Color.yellow; break;
             }
+
+            col = tcc.getColor();
 
             int numberObject = ++nowCountObject;
 
